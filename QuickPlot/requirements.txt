@@ -1,0 +1,12 @@
+numpy
+pandas
+awkward-pandas
+scipy
+pyyaml
+uproot
+matplotlib
+seaborn
+h5py
+toml
+tqdm
+awkward
