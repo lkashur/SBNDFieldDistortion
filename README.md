@@ -20,7 +20,7 @@ source setup.sh
 ## Quick Analysis
 A python script exists that gives quick plotting results.  This is meant to be used for small datasets (e.g. a single run), not large-scale calibration.
 
-Start by navigating to the `QuickPlot` folder and creating a virtual python environment.
+Start by navigating to the `QuickPlot/` folder and creating a virtual python environment.
 ```
 cd QuickPlot
 source setup.sh
