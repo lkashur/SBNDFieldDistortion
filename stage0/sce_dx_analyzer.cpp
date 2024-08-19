@@ -57,12 +57,12 @@ int main(int argc, char** argv)
   
   // Select anode-cathode crossers
   auto rdf_ac = rdf_tpc.Filter("selected == 1")
-                       .Filter("tpc != -1");
+    .Filter("tpc != -1");
 
   // Filter hits
   auto rdf_hits = rdf_ac.Define("hit_xs", [&] (ROOT::RVec<bool> htraj, ROOT::RVec<float> hits, int tpc, ROOT::RVec<unsigned short> tpcs)->ROOT::RVec<float>{return get_track_hits(htraj, hits, tpc, tpcs);}, {"hits2.ontraj", "hits2.h.sp.x", "tpc", "hits2.h.tpc"})
-                        .Define("hit_ys", [&] (ROOT::RVec<bool> htraj, ROOT::RVec<float> hits, int tpc, ROOT::RVec<unsigned short> tpcs)->ROOT::RVec<float>{return get_track_hits(htraj, hits, tpc, tpcs);}, {"hits2.ontraj", "hits2.h.sp.y", "tpc", "hits2.h.tpc"})
-                        .Define("hit_zs", [&] (ROOT::RVec<bool> htraj, ROOT::RVec<float> hits, int tpc, ROOT::RVec<unsigned short> tpcs)->ROOT::RVec<float>{return get_track_hits(htraj, hits, tpc, tpcs);}, {"hits2.ontraj", "hits2.h.sp.z", "tpc", "hits2.h.tpc"})
+    .Define("hit_ys", [&] (ROOT::RVec<bool> htraj, ROOT::RVec<float> hits, int tpc, ROOT::RVec<unsigned short> tpcs)->ROOT::RVec<float>{return get_track_hits(htraj, hits, tpc, tpcs);}, {"hits2.ontraj", "hits2.h.sp.y", "tpc", "hits2.h.tpc"})
+    .Define("hit_zs", [&] (ROOT::RVec<bool> htraj, ROOT::RVec<float> hits, int tpc, ROOT::RVec<unsigned short> tpcs)->ROOT::RVec<float>{return get_track_hits(htraj, hits, tpc, tpcs);}, {"hits2.ontraj", "hits2.h.sp.z", "tpc", "hits2.h.tpc"})
                         .Define("hit_ts", [&] (ROOT::RVec<bool> htraj, ROOT::RVec<float> hits, int tpc, ROOT::RVec<unsigned short> tpcs)->ROOT::RVec<float>{return get_track_hits(htraj, hits, tpc, tpcs);}, {"hits2.ontraj", "hits2.h.time", "tpc", "hits2.h.tpc"});
 
   // Get track endpoints (cathode and anode side of each track)
@@ -200,7 +200,7 @@ ROOT::RVec<ROOT::RVec<float>> get_offsets(ROOT::RVec<float> xs, ROOT::RVec<float
     {
       float ideal_x = slope*(zs[i] - min_time_z) + min_time_x;
       float dx = xs[i] - ideal_x;
-      
+
       if(dx == 0.0) continue;
 
       sel_xs.push_back(xs[i]);
